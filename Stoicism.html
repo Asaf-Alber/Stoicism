@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Learn about Stoicism, an ancient Greek philosophy that teaches the development of self-control and fortitude as a means of overcoming destructive emotions.">
+    <title>Stoicism</title>
+    <style>
+        body {
+            background-image: url('images/stoicism.png');
+            background-size: cover;
+            background-repeat: no-repeat;
+            background-attachment: fixed;
+            color: white; /* Added to change text color to white */
+            font-family: Arial, sans-serif;
+        }
+        .timeline {
+            position: relative;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 40px 0;
+        }
+        .timeline::after {
+            content: '';
+            position: absolute;
+            width: 6px;
+            background-color: #fff;
+            top: 0;
+            bottom: 0;
+            left: 50%;
+            margin-left: -3px;
+        }
+        .timeline-item {
+            padding: 20px 40px;
+            position: relative;
+            background-color: inherit;
+            width: 50%;
+            box-sizing: border-box;
+        }
+        .timeline-item::after {
+            content: '';
+            position: absolute;
+            width: 25px;
+            height: 25px;
+            right: -17px;
+            background-color: #fff;
+            border: 4px solid #FF9F55;
+            top: 15px;
+            border-radius: 50%;
+            z-index: 1;
+        }
+        .timeline-item.left {
+            left: 0;
+        }
+        .timeline-item.right {
+            left: 50%;
+        }
+        .timeline-item.right::before {
+            content: " ";
+            height: 0;
+            position: absolute;
+            top: 22px;
+            width: 0;
+            z-index: 1;
+            right: 30px;
+            border: medium solid white;
+            border-width: 10px 0 10px 10px;
+            border-color: transparent transparent transparent white;
+        }
+        .timeline-item.left::before {
+            content: " ";
+            height: 0;
+            position: absolute;
+            top: 22px;
+            width: 0;
+            z-index: 1;
+            left: 30px;
+            border: medium solid white;
+            border-width: 10px 10px 10px 0;
+            border-color: transparent white transparent transparent;
+        }
+        .timeline-item-content {
+            padding: 20px 30px;
+            background-color: #FF9F55;
+            position: relative;
+            border-radius: 6px;
+            transition: transform 0.3s ease-in-out;
+        }
+        .timeline-item-content:hover {
+            transform: scale(1.05);
+        }
+        .timeline-item-content h2 {
+            margin-top: 0;
+            color: white;
+        }
+        .timeline-item-content p {
+            margin: 0;
+            color: white;
+        }
+        .timeline-item-content img {
+            max-width: 100%;
+            height: auto;
+            border-radius: 6px;
+            margin-top: 10px;
+        }
+    </style>
+</head>
+<body>
+    <h1>Stoicism</h1>
+    <form id="stoicismForm">
+        <fieldset>
+            <legend>Have you heard about stoicism?</legend>
+            <input type="radio" id="yes" name="heardAboutStoicism" value="yes">
+            <label for="yes">Yes</label><br>
+            <input type="radio" id="no" name="heardAboutStoicism" value="no">
+            <label for="no">No</label><br><br>
+        </fieldset>
+        <input type="submit" value="Submit">
+    </form>
+    <div class="timeline">
+        <div class="timeline-item left">
+            <div class="timeline-item-content">
+                <h2>Zeno of Citium (334-262 BC)</h2>
+                <p>Founder of Stoicism. He began teaching in the Stoa Poikile (Painted Porch) in Athens.</p>
+            </div>
+        </div>
+        <div class="timeline-item right">
+            <div class="timeline-item-content">
+                <h2>Cleanthes (331-232 BC)</h2>
+                <p>Successor of Zeno. Known for his work in ethics and his hymn to Zeus.</p>
+            </div>
+        </div>
+        <div class="timeline-item left">
+            <div class="timeline-item-content">
+                <h2>Chrysippus (279-206 BC)</h2>
+                <p>Third head of the Stoic school. Significant contributions to logic, ethics, and physics.</p>
+            </div>
+        </div>
+        <div class="timeline-item right">
+            <div class="timeline-item-content">
+                <h2>Epictetus (50-135 AD)</h2>
+                <p>Former slave who became a prominent Stoic philosopher. His teachings were recorded by his student Arrian.</p>
+            </div>
+        </div>
+        <div class="timeline-item left">
+            <div class="timeline-item-content">
+                <h2>Marcus Aurelius (121-180 AD)</h2>
+                <p>Roman Emperor and Stoic philosopher. Known for his work "Meditations".</p>
+            </div>
+        </div>
+    </div>
+    <script>
+        document.getElementById('stoicismForm').addEventListener('submit', function(event) {
+            event.preventDefault();
+            const selectedOption = document.querySelector('input[name="heardAboutStoicism"]:checked');
+            if (selectedOption) {
+                if (selectedOption.value === 'yes') {
+                    alert('Great!');
+                } else if (selectedOption.value === 'no') {
+                    window.location.href = 'info.html';
+                }
+            }
+        });
+    </script>
+    <footer>
+        <p>Interested in learning more? <a href="questionnaire.html" style="color: white;">Take our questionnaire</a></p>
+    </footer>
+</body>
+</html>

@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Stoicism Information</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f4;
+            color: #333;
+            transition: background-color 0.3s, color 0.3s;
+        }
+        .dark-theme {
+            background-color: #121212;
+            color: #ffffff;
+        }
+        header {
+            background: url('images/marcus_aurelius.png') no-repeat center right 10%; /* Position image slightly to the left */
+            background-size: contain; /* Adjusted to contain the image */
+            color: #fff;
+            padding: 2rem 0;
+            text-align: left; /* Align text to the left */
+            position: relative;
+            height: 200px; /* Set a fixed height for the header */
+            overflow: hidden; /* Hide any overflow */
+        }
+        .dark-theme header {
+            color: #ffffff;
+        }
+        h1, h2 {
+            color: #333;
+            transition: color 0.3s;
+        }
+        .dark-theme h1, .dark-theme h2 {
+            color: #ffffff;
+        }
+        .container {
+            padding: 2rem;
+        }
+        p {
+            margin-bottom: 1rem;
+        }
+        .info-section {
+            padding: 1rem;
+            background: #fff;
+            margin-bottom: 1rem;
+            border-radius: 5px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        .dark-theme .info-section {
+            background-color: #1e1e1e;
+            color: #ffffff;
+        }
+        .quote-section {
+            text-align: center;
+            padding: 2rem;
+            background: #e0e0e0;
+            margin-bottom: 1rem;
+            border-radius: 5px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        .dark-theme .quote-section {
+            background-color: #1e1e1e;
+            color: #ffffff;
+        }
+        .quote-section h2 {
+            font-size: 2rem;
+            margin-bottom: 1rem;
+        }
+        .quote-section p {
+            font-size: 1.5rem;
+            font-style: italic;
+        }
+        footer {
+            padding: 1rem;
+            text-align: center;
+            background-color: #333;
+            color: #fff;
+        }
+        .dark-theme footer {
+            background-color: #1e1e1e;
+            color: #ffffff;
+        }
+        footer a {
+            color: #fff;
+            text-decoration: none;
+        }
+        footer img {
+            vertical-align: middle;
+            margin-left: 0.5rem;
+        }
+        #theme-toggle {
+            position: fixed;
+            top: 1rem;
+            right: 1rem;
+            padding: 0.5rem 1rem;
+            background-color: #333;
+            color: #fff;
+            border: none;
+            cursor: pointer;
+        }
+        .dark-theme #theme-toggle {
+            background-color: #ffffff;
+            color: #333;
+        }
+    </style>
+</head>
+<body>
+    <div class="quote-section" id="quote-section">
+        <h2>Daily Stoic Quote</h2>
+        <p id="stoic-quote">Loading...</p>
+    </div>
+    <header>
+        <h1 style="font-size: 3rem; text-align: left; text-decoration: underline; margin-left: 1rem;">Welcome to Stoicism</h1>
+    </header>
+    <button id="theme-toggle">Toggle Theme</button>
+    <div class="container">
+        <div class="info-section">
+            <h2>What is Stoicism?</h2>
+            <p>Stoicism is an ancient Greek philosophy that teaches the development of self-control and fortitude as a means of overcoming destructive emotions. It was founded in Athens by Zeno of Citium in the early 3rd century BC.</p>
+        </div>
+        <div class="info-section">
+            <h2>Principles of Stoicism</h2>
+            <p>Stoicism teaches that the path to happiness is found in accepting the moment as it presents itself, by not allowing oneself to be controlled by the desire for pleasure or fear of pain, by using one's mind to understand the world and to do one's part in nature's plan, and by working together and treating others fairly and justly.</p>
+        </div>
+        <div class="info-section">
+            <h2>Founders of Stoicism</h2>
+            <p><strong>Zeno of Citium</strong>: Zeno was the founder of Stoicism. He began teaching in the Stoa Poikile (Painted Porch) in Athens, from which the philosophy gets its name. Zeno's teachings laid the foundation for the Stoic school of thought.</p>
+            <p><strong>Cleanthes</strong>: Cleanthes was a student of Zeno and succeeded him as the head of the Stoic school. He is known for his work in ethics and his hymn to Zeus, which reflects Stoic theology.</p>
+            <p><strong>Chrysippus</strong>: Chrysippus was the third head of the Stoic school and is often considered the second founder of Stoicism due to his significant contributions to the development of the philosophy. He wrote extensively on logic, ethics, and physics.</p>
+        </div>
+        <div class="info-section">
+            <h2>Practical Applications</h2>
+            <p>Stoicism has practical applications in everyday life. It encourages mindfulness, resilience, and a focus on what one can control. By practicing Stoicism, individuals can develop a more rational and calm approach to life's challenges.</p>
+        </div>
+    </div>
+    <footer>
+        <p>Learn more about Stoicism: <a href="https://www.youtube.com/watch?v=Auuk1y4DRgk&t=8s&ab_channel=MichaelSugrue" target="_blank"><img src="images/youtube_logo.png" alt="YouTube" width="20" height="20"></a></p>
+    </footer>
+    <script>
+        async function fetchStoicQuote() {
+            try {
+                const response = await fetch('https://stoic-quotes.com/api/quote');
+                const data = await response.json();
+                return `${data.text} - ${data.author}`;
+            } catch (error) {
+                console.error('Error fetching the quote:', error);
+                return 'Error fetching the quote. Please try again later.';
+            }
+        }
+
+        document.addEventListener('DOMContentLoaded', async () => {
+            const quoteElement = document.getElementById('stoic-quote');
+            const quote = await fetchStoicQuote();
+            quoteElement.textContent = quote;
+        });
+
+        // Theme toggle functionality
+        const themeToggleButton = document.getElementById('theme-toggle');
+        themeToggleButton.addEventListener('click', () => {
+            document.body.classList.toggle('dark-theme');
+        });
+    </script>
+</body>
+</html>
