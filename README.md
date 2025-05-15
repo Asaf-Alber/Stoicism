@@ -22,27 +22,6 @@ This project presents core ideas and quotes from Stoic philosophy, built as a li
 
 ---
 
-## 📁 Project Structure (Suggested)
-
-You can reorganize your files like this:
-
-```
-stoicism/
-├── index.html
-├── css/
-│   └── styles.css
-├── js/
-│   └── script.js
-├── php/
-│   └── contact.php
-├── images/
-│   └── marcus-aurelius.jpg
-├── LICENSE
-└── README.md
-```
-
----
-
 ## 🚀 How to Run Locally
 
 1. Clone the repository:
